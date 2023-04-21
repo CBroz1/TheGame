@@ -2489,7 +2489,8 @@ look up the powers associated with a unique set of categories</p>
 <span class="normal">334</span>
 <span class="normal">335</span>
 <span class="normal">336</span>
-<span class="normal">337</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">337</span>
+<span class="normal">338</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">Power</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class representing a Power&quot;&quot;&quot;</span>
 
@@ -2639,6 +2640,7 @@ look up the powers associated with a unique set of categories</p>
             <span class="s2">&quot;Description&quot;</span><span class="p">,</span>
         <span class="p">]</span>
         <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">removed</span><span class="p">}</span>
+        <span class="n">output</span><span class="p">[</span><span class="s2">&quot;Mechanic&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="s2">&quot;Mechanic&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">attrib</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">StatAdjusts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Save</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Prereq</span><span class="p">]:</span>
             <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ensure_list</span><span class="p">(</span><span class="n">attrib</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">a</span><span class="p">:</span>
@@ -2989,9 +2991,9 @@ mechanic to reflect selected choice.</p></td>
 
       <details class="quote">
         <summary>Source code in <code>automation/templates/powers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">335</span>
-<span class="normal">336</span>
-<span class="normal">337</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Print non-default power items with repr property and linebreaks&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">my_repr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>

@@ -1176,7 +1176,7 @@
 
 
 <h2 id="automation.templates.main.yaml_to_other" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">yaml_to_other</span><span class="p">(</span><span class="n">input_files</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;04_Powers.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;05_Vulnerabilities.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;06_Bestiary.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;07_Items.yaml&#39;</span><span class="p">],</span> <span class="n">writing</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;md&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="s1">&#39;png&#39;</span><span class="p">],</span> <span class="n">out_delim</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">run_samples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">yaml_to_other</span><span class="p">(</span><span class="n">input_files</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;04_Powers.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;05_Vulnerabilities.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;06_Bestiary.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;07_Items.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;08_PCs.yaml&#39;</span><span class="p">],</span> <span class="n">writing</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;md&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="s1">&#39;png&#39;</span><span class="p">],</span> <span class="n">out_delim</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">run_samples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 <a href="#automation.templates.main.yaml_to_other" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -1204,7 +1204,7 @@
           <td><p>Local relative paths.
 If len=2, also make combined csv</p></td>
           <td>
-                <code>[&#39;04_Powers.yaml&#39;, &#39;05_Vulnerabilities.yaml&#39;, &#39;06_Bestiary.yaml&#39;, &#39;07_Items.yaml&#39;]</code>
+                <code>[&#39;04_Powers.yaml&#39;, &#39;05_Vulnerabilities.yaml&#39;, &#39;06_Bestiary.yaml&#39;, &#39;07_Items.yaml&#39;, &#39;08_PCs.yaml&#39;]</code>
           </td>
         </tr>
         <tr>
@@ -1274,12 +1274,14 @@ If len=2, also make combined csv</p></td>
 <span class="normal">46</span>
 <span class="normal">47</span>
 <span class="normal">48</span>
-<span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">yaml_to_other</span><span class="p">(</span>
+<span class="normal">49</span>
+<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">yaml_to_other</span><span class="p">(</span>
     <span class="n">input_files</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span>
         <span class="s2">&quot;04_Powers.yaml&quot;</span><span class="p">,</span>
         <span class="s2">&quot;05_Vulnerabilities.yaml&quot;</span><span class="p">,</span>
         <span class="s2">&quot;06_Bestiary.yaml&quot;</span><span class="p">,</span>
         <span class="s2">&quot;07_Items.yaml&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;08_PCs.yaml&quot;</span><span class="p">,</span>
     <span class="p">],</span>
     <span class="n">writing</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;md&quot;</span><span class="p">,</span> <span class="s2">&quot;csv&quot;</span><span class="p">,</span> <span class="s2">&quot;png&quot;</span><span class="p">],</span>
     <span class="n">out_delim</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># or &#39;,&#39;</span>

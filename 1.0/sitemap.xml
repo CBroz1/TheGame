@@ -66,6 +66,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://DeckofAdventures.github.io/TheGame/latest/1_Mechanics/08_PCs/</loc>
+         <lastmod>2023-04-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://DeckofAdventures.github.io/TheGame/latest/1_Mechanics/99_Glossary/</loc>
          <lastmod>2023-04-21</lastmod>
          <changefreq>daily</changefreq>

@@ -2857,7 +2857,18 @@ Bestiary().as_dict['MyPC'] # Returns Beast object</p>
 <span class="normal">559</span>
 <span class="normal">560</span>
 <span class="normal">561</span>
-<span class="normal">562</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">562</span>
+<span class="normal">563</span>
+<span class="normal">564</span>
+<span class="normal">565</span>
+<span class="normal">566</span>
+<span class="normal">567</span>
+<span class="normal">568</span>
+<span class="normal">569</span>
+<span class="normal">570</span>
+<span class="normal">571</span>
+<span class="normal">572</span>
+<span class="normal">573</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">Beast</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for representing all creatures (e.g., PCs, bosses, etc.)&quot;&quot;&quot;</span>
 
@@ -3172,9 +3183,19 @@ Bestiary().as_dict['MyPC'] # Returns Beast object</p>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wrote HTML </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">make_pc_img</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">browser</span><span class="o">=</span><span class="s2">&quot;chrome&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">items</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">browser</span><span class="o">=</span><span class="s2">&quot;google-chrome&quot;</span><span class="p">,</span>
+        <span class="n">custom_browser_flags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Save pc html as png file</span>
+
+<span class="sd">        Writing out the image with html2image can be a noisy process with multiple</span>
+<span class="sd">        warning log items from chrome. To quiet these, git clone html2image and pip</span>
+<span class="sd">        install as editable. Then, add the following as the last line in the command</span>
+<span class="sd">        list in the relevant browser: &#39;&gt; /dev/null 2&gt;&amp;1&#39;. For chrome.py, L250</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            file_path (str, optional): Filename, no extension. Always in _output</span>
@@ -3186,6 +3207,7 @@ Bestiary().as_dict['MyPC'] # Returns Beast object</p>
 
         <span class="n">hti</span> <span class="o">=</span> <span class="n">Html2Image</span><span class="p">(</span>
             <span class="n">browser</span><span class="o">=</span><span class="n">browser</span><span class="p">,</span>
+            <span class="n">custom_flags</span><span class="o">=</span><span class="n">custom_browser_flags</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">output_path</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pc_file_info</span><span class="p">(</span><span class="s2">&quot;png&quot;</span><span class="p">)</span>
         <span class="n">hti</span><span class="o">.</span><span class="n">output_path</span> <span class="o">=</span> <span class="n">file_path</span> <span class="ow">or</span> <span class="n">output_path</span>
@@ -3839,7 +3861,7 @@ Defaults a set of items store in the _html function.</p></td>
 
 
 <h3 id="automation.templates.bestiary.Beast.make_pc_img" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">make_pc_img</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">browser</span><span class="o">=</span><span class="s1">&#39;chrome&#39;</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">make_pc_img</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">browser</span><span class="o">=</span><span class="s1">&#39;google-chrome&#39;</span><span class="p">,</span> <span class="n">custom_browser_flags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 <a href="#automation.templates.bestiary.Beast.make_pc_img" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -3847,6 +3869,10 @@ Defaults a set of items store in the _html function.</p></td>
   <div class="doc doc-contents ">
   
       <p>Save pc html as png file</p>
+<p>Writing out the image with html2image can be a noisy process with multiple
+warning log items from chrome. To quiet these, git clone html2image and pip
+install as editable. Then, add the following as the last line in the command
+list in the relevant browser: '&gt; /dev/null 2&gt;&amp;1'. For chrome.py, L250</p>
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3910,10 +3936,31 @@ Defaults a set of items store in the _html function.</p></td>
 <span class="normal">542</span>
 <span class="normal">543</span>
 <span class="normal">544</span>
-<span class="normal">545</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">make_pc_img</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">browser</span><span class="o">=</span><span class="s2">&quot;chrome&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span>
+<span class="normal">545</span>
+<span class="normal">546</span>
+<span class="normal">547</span>
+<span class="normal">548</span>
+<span class="normal">549</span>
+<span class="normal">550</span>
+<span class="normal">551</span>
+<span class="normal">552</span>
+<span class="normal">553</span>
+<span class="normal">554</span>
+<span class="normal">555</span>
+<span class="normal">556</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">make_pc_img</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">items</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">browser</span><span class="o">=</span><span class="s2">&quot;google-chrome&quot;</span><span class="p">,</span>
+    <span class="n">custom_browser_flags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Save pc html as png file</span>
+
+<span class="sd">    Writing out the image with html2image can be a noisy process with multiple</span>
+<span class="sd">    warning log items from chrome. To quiet these, git clone html2image and pip</span>
+<span class="sd">    install as editable. Then, add the following as the last line in the command</span>
+<span class="sd">    list in the relevant browser: &#39;&gt; /dev/null 2&gt;&amp;1&#39;. For chrome.py, L250</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        file_path (str, optional): Filename, no extension. Always in _output</span>
@@ -3925,6 +3972,7 @@ Defaults a set of items store in the _html function.</p></td>
 
     <span class="n">hti</span> <span class="o">=</span> <span class="n">Html2Image</span><span class="p">(</span>
         <span class="n">browser</span><span class="o">=</span><span class="n">browser</span><span class="p">,</span>
+        <span class="n">custom_flags</span><span class="o">=</span><span class="n">custom_browser_flags</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">output_path</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pc_file_info</span><span class="p">(</span><span class="s2">&quot;png&quot;</span><span class="p">)</span>
     <span class="n">hti</span><span class="o">.</span><span class="n">output_path</span> <span class="o">=</span> <span class="n">file_path</span> <span class="ow">or</span> <span class="n">output_path</span>
